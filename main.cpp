@@ -52,7 +52,7 @@ void withdraw() {
             cin >> amount;
             if (amount <= accounts[i].balance) {
                 accounts[i].balance -= amount;
-                cout << "Withdraw successful.\n";
+                cout << "Withdrawal successful.\n";
             } else {
                 cout << "Insufficient balance.\n";
             }
@@ -68,50 +68,39 @@ void checkBalance() {
     cin >> accNo;
     for (int i = 0; i < accountCount; i++) {
         if (accounts[i].accNo == accNo) {
-            cout << "Current Balance: " << accounts[i].balance << endl;
+            cout << "Account Holder: " << accounts[i].name << endl;
+            cout << "Current Balance: Rs." << accounts[i].balance << endl;
             return;
         }
     }
     cout << "Account not found.\n";
 }
 
-int main() {
+void menu() {
     int choice;
     do {
-        cout << "\n--- Bank Management System ---\n";
+        cout << "\n==== Bank Menu ====\n";
         cout << "1. Create Account\n";
         cout << "2. Deposit\n";
         cout << "3. Withdraw\n";
         cout << "4. Check Balance\n";
-        cout << "5. Search Account\n";
-        cout << "6. Exit\n";
+        cout << "5. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
         switch (choice) {
-            case 1:
-                createAccount();
-                break;
-            case 2:
-                deposit();
-                break;
-            case 3:
-                withdraw();
-                break;
-            case 4:
-                checkBalance();
-                break;
-            case 5:
-                // searchAccount();
-                break;
-            case 6:
-                cout << "Exiting...\n";
-                break;
-            default:
-                cout << "Invalid choice.\n";
+            case 1: createAccount(); break;
+            case 2: deposit(); break;
+            case 3: withdraw(); break;
+            case 4: checkBalance(); break;
+            case 5: cout << "Exiting...\n"; break;
+            default: cout << "Invalid choice!\n";
         }
-    } while (choice != 6);
+    } while (choice != 5);
+}
 
+int main() {
+    menu();
     return 0;
 }
 
