@@ -24,6 +24,57 @@ void createAccount() {
     cout << "Account created successfully!\n";
 }
 
+void deposit() {
+    int accNo;
+    double amount;
+    cout << "Enter Account Number: ";
+    cin >> accNo;
+    for (int i = 0; i < accountCount; i++) {
+        if (accounts[i].accNo == accNo) {
+            cout << "Enter amount to deposit: ";
+            cin >> amount;
+            accounts[i].balance += amount;
+            cout << "Deposit successful.\n";
+            return;
+        }
+    }
+    cout << "Account not found.\n";
+}
+
+void withdraw() {
+    int accNo;
+    double amount;
+    cout << "Enter Account Number: ";
+    cin >> accNo;
+    for (int i = 0; i < accountCount; i++) {
+        if (accounts[i].accNo == accNo) {
+            cout << "Enter amount to withdraw: ";
+            cin >> amount;
+            if (amount <= accounts[i].balance) {
+                accounts[i].balance -= amount;
+                cout << "Withdraw successful.\n";
+            } else {
+                cout << "Insufficient balance.\n";
+            }
+            return;
+        }
+    }
+    cout << "Account not found.\n";
+}
+
+void checkBalance() {
+    int accNo;
+    cout << "Enter Account Number: ";
+    cin >> accNo;
+    for (int i = 0; i < accountCount; i++) {
+        if (accounts[i].accNo == accNo) {
+            cout << "Current Balance: " << accounts[i].balance << endl;
+            return;
+        }
+    }
+    cout << "Account not found.\n";
+}
+
 int main() {
     int choice;
     do {
@@ -42,13 +93,13 @@ int main() {
                 createAccount();
                 break;
             case 2:
-                // deposit();
+                deposit();
                 break;
             case 3:
-                // withdraw();
+                withdraw();
                 break;
             case 4:
-                // checkBalance();
+                checkBalance();
                 break;
             case 5:
                 // searchAccount();
