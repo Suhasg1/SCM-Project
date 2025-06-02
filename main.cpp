@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 struct Account {
@@ -120,6 +119,7 @@ void applyLoan() {
     cout << "Account not found.\n";
 }
 
+// ======== Member 3: Safe Locker Feature ========
 void accessLocker() {
     int accNo;
     string pass;
@@ -152,28 +152,7 @@ void accessLocker() {
     }
     cout << "Account not found.\n";
 }
-
-// ======= Member 4: Interest Calculation (Fixed & Feature Added) =======
-void calculateInterest() {
-    int accNo;
-    double rate;
-    int years;
-    cout << "Enter Account Number: ";
-    cin >> accNo;
-    for (int i = 0; i < accountCount; i++) {
-        if (accounts[i].accNo == accNo) {
-            cout << "Enter annual interest rate (e.g., 5 for 5%): ";
-            cin >> rate;
-            cout << "Enter number of years: ";
-            cin >> years;
-            double interest = accounts[i].balance * pow((1 + rate / 100), years) - accounts[i].balance;
-            cout << "Compound Interest after " << years << " years: Rs." << interest << endl;
-            return;
-        }
-    }
-    cout << "Account not found.\n";
-}
-// ======================================================================
+// ==============================================
 
 void menu() {
     int choice;
@@ -186,8 +165,7 @@ void menu() {
         cout << "5. Mini Statement\n";
         cout << "6. Apply for Loan\n";
         cout << "7. Access Safe Locker\n";
-        cout << "8. Calculate Interest\n";
-        cout << "9. Exit\n";
+        cout << "8. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -199,11 +177,10 @@ void menu() {
             case 5: showMiniStatement(); break;
             case 6: applyLoan(); break;
             case 7: accessLocker(); break;
-            case 8: calculateInterest(); break;
-            case 9: cout << "Exiting...\n"; break;
+            case 8: cout << "Exiting...\n"; break;
             default: cout << "Invalid choice!\n";
         }
-    } while (choice != 9);
+    } while (choice != 8);
 }
 
 int main() {
